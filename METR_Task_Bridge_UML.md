@@ -15,14 +15,14 @@ sequenceDiagram
     participant Agent as AI Agent<br/>(or Human CLI)
     participant AuxVM as Aux VM<br/>(Optional)
 
-    rect rgb(60, 60, 60)
+    rect rgb(10, 10, 10)
         Note over User,Bridge: 1. EVALUATION INITIALIZATION
         User->>Inspect: inspect eval mtb/bridge<br/>-T image_tag=blackbox-1.0.2<br/>--sample-id apple
         Inspect->>Bridge: Load bridge task definition
         Bridge->>Bridge: Parse task parameters<br/>(image_tag, sample_id, sandbox type)
     end
 
-    rect rgb(80, 80, 80)
+    rect rgb(10, 10, 10)
         Note over Bridge,Registry: 2. IMAGE RESOLUTION & PULL
         alt Full image name provided
             Bridge->>Registry: Pull image directly
@@ -33,7 +33,7 @@ sequenceDiagram
         Registry-->>Sandbox: Image available
     end
 
-    rect rgb(60, 60, 60)
+    rect rgb(10, 10, 10)
         Note over Bridge,TaskEnv: 3. SANDBOX CREATION
         alt sandbox=docker (default)
             Bridge->>Sandbox: Create Docker container
@@ -44,7 +44,7 @@ sequenceDiagram
         TaskEnv->>TaskEnv: Set up /home/agent directory
     end
 
-    rect rgb(80, 80, 80)
+    rect rgb(10, 10, 10)
         Note over TaskEnv,TaskFamily: 4. TASK SETUP PHASE
         Bridge->>TaskHelper: Call taskhelper install
         TaskHelper->>TaskFamily: TaskFamily.install()
@@ -73,7 +73,7 @@ sequenceDiagram
         end
     end
 
-    rect rgb(60, 60, 60)
+    rect rgb(10, 10, 10)
         Note over Bridge,TaskFamily: 5. TASK START
         Bridge->>TaskHelper: Call taskhelper start
         TaskHelper->>TaskFamily: TaskFamily.start(task)
@@ -90,7 +90,7 @@ sequenceDiagram
         end
     end
 
-    rect rgb(80, 80, 80)
+    rect rgb(10, 10, 10)
         Note over Inspect,Agent: 6. AGENT EXECUTION
         Inspect->>Agent: Initialize with task instructions
         
@@ -119,7 +119,7 @@ sequenceDiagram
         Agent->>Inspect: Submit solution string
     end
 
-    rect rgb(60, 60, 60)
+    rect rgb(10, 10, 10)
         Note over Inspect,TaskFamily: 7. SCORING & CLEANUP
         Inspect->>Bridge: Score submission
         Bridge->>TaskHelper: Call taskhelper score
