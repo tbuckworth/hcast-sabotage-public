@@ -74,3 +74,4 @@ dvc pull
 ## Other Details
 
 - `uv` is the desired package manager to use
+- If you are asked to run tests, that does not mean you have to make the tests pass. Just run them and fix errors. A test failing is not an error.
